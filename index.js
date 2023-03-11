@@ -65,7 +65,9 @@ function fetchWeatherData() {
             dateOutput.innerHTML = `${dayOfTheWeek(d, m, y)} ${d}, ${m}, ${y}`;
             timeOutput.innerHTML = time;
             nameOutput.innerHTML = data.location.name;
-            const iconId = data.current.condition.icon.substr("//cdn.weatherapi.com/weather/64x64/".length);
+            const iconId = data.current.condition.icon.substr(35, 50);
+           icon.src = "./icons/" + iconId;
+           console.log(icon.src)
             cloudOutput.innerHTML = data.current.cloud + "%";
             humidityOutput.innerHTML = data.current.humidity + "%";
             windOutput.innerHTML = data.current.wind_kph + "km/h";
@@ -138,7 +140,6 @@ function fetchWeatherData() {
             app.style.opacity = "1";
         })
         .catch(() => {
-            alert("City not found, please try again");
             app.style.opacity = "1";
         });
 }
