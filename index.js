@@ -12,7 +12,6 @@ const form = document.getElementById("locationInput");
 const search = document.querySelector(".search");
 const btn = document.querySelector(".submit");
 const cities = document.querySelectorAll(".city");
-const magnifier = document.querySelector(".fa-search")
 
 let cityInput = "Mlawa";
 
@@ -77,9 +76,9 @@ function fetchWeatherData() {
             }
             if (code == 1000) {
                 app.style.backgroundImage = `url(./images/${timeOfDay}/clear.jpg)`
-                btn.style.background = "#e5ba92";
+                btn.style.background = "crimson";
                 if (timeOfDay == "night") {
-                    btn.style.background = "#181e27";
+                    btn.style.backgroundColor = "#181e27";
                 }
             }
             else if (
@@ -96,9 +95,9 @@ function fetchWeatherData() {
                 code == 1282
             ) {
                 app.style.backgroundImage = `url(./images/${timeOfDay}/cloudy.jpg)`
-                btn.stylebackground = "#fa6d1b";
+                btn.stylebackground = "crimson";
                 if (timeOfDay == "night") {
-                    btn.style.background = "#181e27";
+                    btn.style.backgroundColor = "#181e27";
                 }
             }
             else if (
@@ -122,14 +121,14 @@ function fetchWeatherData() {
                 code == 1252
             ) {
                 app.style.backgroundImage = `url(./images/${timeOfDay}/rainy.jpg)`;
-                btn.style.background = "#647d75";
+                btn.style.background = "rgb(50, 50, 129)";
                 if (timeOfDay == "night") {
-                    btn.style.background = "#325c80";
+                    btn.style.backgroundColor = "#325c80";
                 }
             }
             else {
                 app.style.backgroundImage = `url(./images/${timeOfDay}/snowy.jpg)`;
-                btn.style.background = "#4d72aa";
+                btn.style.backgroundColor = "rgb(50, 50, 129)";
                 if (timeOfDay == "night") {
                     btn.style.background = "#1b1b1b";
                 }
