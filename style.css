@@ -117,7 +117,7 @@ h2 {
 }
 .submit:hover {
   background-color: #fff;
-  color: #000;
+  color: rgb(40, 40, 127);
 }
 .search {
   background: none;
