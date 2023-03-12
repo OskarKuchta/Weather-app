@@ -13,7 +13,6 @@ const search = document.querySelector(".search");
 const btn = document.querySelector(".submit");
 const cities = document.querySelectorAll(".city");
 
-
 let cityInput = "London";
 
 cities.forEach((city) => {
@@ -39,13 +38,13 @@ form.addEventListener("submit", (e) => {
 
 function dayOfTheWeek(day, month, year) {
     const weekday = [
+        "Sunday",
         "Monday",
         "Tuesday",
         "Wednesday",
         "Thursday",
         "Friday",
-        "Saturday",
-        "Sunday"
+        "Saturday"
     ];
     return weekday[new Date(`${day}/${month}/${year}`).getDay()];
 }
@@ -73,8 +72,7 @@ function fetchWeatherData() {
             windOutput.innerHTML = data.current.wind_kph + "km/h";
 
             let timeOfDay = "day";
-            const code = data.curent.condition.code;
-
+            const code = data.current.condition.code;
             if (!data.current.is_day) {
                 timeOfDay = "night";
             }
@@ -140,6 +138,7 @@ function fetchWeatherData() {
             app.style.opacity = "1";
         })
         .catch(() => {
+            alert("You match a incorrect name of city!")
             app.style.opacity = "1";
         });
 }
