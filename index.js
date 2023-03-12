@@ -12,8 +12,9 @@ const form = document.getElementById("locationInput");
 const search = document.querySelector(".search");
 const btn = document.querySelector(".submit");
 const cities = document.querySelectorAll(".city");
+const magnifier = document.querySelector(".fa-search")
 
-let cityInput = "Warszawa";
+let cityInput = "Mlawa";
 
 cities.forEach((city) => {
     city.addEventListener("click", (e) => {
@@ -38,19 +39,19 @@ form.addEventListener("submit", (e) => {
 
 function dayOfTheWeek(day, month, year) {
     const weekday = [
-        "Sunday",
-        "Monday",
-        "Tuesday",
-        "Wednesday",
-        "Thursday",
-        "Friday",
-        "Saturday"
+        "Niedziela",
+        "Poniedziałek",
+        "Wtorek",
+        "Środa",
+        "Czwartek",
+        "Piątek",
+        "Sobota"
     ];
     return weekday[new Date(`${day}/${month}/${year}`).getDay()];
 }
 
 function fetchWeatherData() {
-    fetch(`http://api.weatherapi.com/v1/current.json?key=a9518d77c15f46398a4162156231103&q=${cityInput}&aqi=yes`)
+    fetch(`http://api.weatherapi.com/v1/current.json?key=a9518d77c15f46398a4162156231103&q=${cityInput}&lang=pl`)
         .then(response => response.json())
         .then(data => {
             temp.innerHTML = data.current.temp_c + "&#176;";
@@ -62,9 +63,9 @@ function fetchWeatherData() {
             const time = date.substr(11);
             dateOutput.innerHTML = `${dayOfTheWeek(d, m, y)} ${d} / ${m} / ${y}`;
             timeOutput.innerHTML = time;
-            nameOutput.innerHTML = data.location.name;
+            nameOutput.innerHTML = data.location.name + ", <br>" + data.location.country;
             const iconId = data.current.condition.icon.substr(35, 50);
-           icon.src = "./icons/" + iconId;
+            icon.src = "./icons/" + iconId;
             cloudOutput.innerHTML = data.current.cloud + "%";
             humidityOutput.innerHTML = data.current.humidity + "%";
             windOutput.innerHTML = data.current.wind_kph + "km/h";
@@ -122,7 +123,7 @@ function fetchWeatherData() {
             ) {
                 app.style.backgroundImage = `url(./images/${timeOfDay}/rainy.jpg)`;
                 btn.style.background = "#647d75";
-                if(timeOfDay == "night") {
+                if (timeOfDay == "night") {
                     btn.style.background = "#325c80";
                 }
             }
