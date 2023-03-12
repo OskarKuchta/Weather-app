@@ -13,7 +13,7 @@ const search = document.querySelector(".search");
 const btn = document.querySelector(".submit");
 const cities = document.querySelectorAll(".city");
 
-let cityInput = "London";
+let cityInput = "Warszawa";
 
 cities.forEach((city) => {
     city.addEventListener("click", (e) => {
@@ -31,7 +31,7 @@ form.addEventListener("submit", (e) => {
         cityInput = search.value;
         fetchWeatherData();
         search.value = "";
-        app.style.opacity = "0";
+        // app.style.opacity = "0";
     }
     e.preventDefault();
 });
@@ -53,7 +53,6 @@ function fetchWeatherData() {
     fetch(`http://api.weatherapi.com/v1/current.json?key=a9518d77c15f46398a4162156231103&q=${cityInput}&aqi=yes`)
         .then(response => response.json())
         .then(data => {
-            console.log(data);
             temp.innerHTML = data.current.temp_c + "&#176;";
             conditionOutput.innerHTML = data.current.condition.text;
             const date = data.location.localtime;
@@ -61,12 +60,11 @@ function fetchWeatherData() {
             const m = parseInt(date.substr(5, 2));
             const d = parseInt(date.substr(8, 2));
             const time = date.substr(11);
-            dateOutput.innerHTML = `${dayOfTheWeek(d, m, y)} ${d}, ${m}, ${y}`;
+            dateOutput.innerHTML = `${dayOfTheWeek(d, m, y)} ${d} / ${m} / ${y}`;
             timeOutput.innerHTML = time;
             nameOutput.innerHTML = data.location.name;
             const iconId = data.current.condition.icon.substr(35, 50);
            icon.src = "./icons/" + iconId;
-           console.log(icon.src)
             cloudOutput.innerHTML = data.current.cloud + "%";
             humidityOutput.innerHTML = data.current.humidity + "%";
             windOutput.innerHTML = data.current.wind_kph + "km/h";
