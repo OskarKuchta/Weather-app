@@ -48,7 +48,6 @@ function dayOfTheWeek(day, month, year) {
     ];
     return weekday[new Date(`${day}/${month}/${year}`).getDay()];
 }
-
 function fetchWeatherData() {
     fetch(`http://api.weatherapi.com/v1/current.json?key=a9518d77c15f46398a4162156231103&q=${cityInput}&lang=pl`)
         .then(response => response.json())
@@ -78,7 +77,7 @@ function fetchWeatherData() {
                 app.style.backgroundImage = `url(./images/${timeOfDay}/clear.jpg)`
                 btn.style.background = "crimson";
                 if (timeOfDay == "night") {
-                    btn.style.backgroundColor = "#181e27";
+                    btn.style.background = "#181e27";
                 }
             }
             else if (
@@ -97,7 +96,7 @@ function fetchWeatherData() {
                 app.style.backgroundImage = `url(./images/${timeOfDay}/cloudy.jpg)`
                 btn.stylebackground = "crimson";
                 if (timeOfDay == "night") {
-                    btn.style.backgroundColor = "#181e27";
+                    btn.style.background = "#181e27";
                 }
             }
             else if (
@@ -123,12 +122,12 @@ function fetchWeatherData() {
                 app.style.backgroundImage = `url(./images/${timeOfDay}/rainy.jpg)`;
                 btn.style.background = "rgb(50, 50, 129)";
                 if (timeOfDay == "night") {
-                    btn.style.backgroundColor = "#325c80";
+                    btn.style.background = "#325c80";
                 }
             }
             else {
                 app.style.backgroundImage = `url(./images/${timeOfDay}/snowy.jpg)`;
-                btn.style.backgroundColor = "rgb(50, 50, 129)";
+                btn.style.background = "rgb(50, 50, 129)";
                 if (timeOfDay == "night") {
                     btn.style.background = "#1b1b1b";
                 }

@@ -166,9 +166,6 @@ h2 {
     width: 100%;
     top: initial;
   }
-  .bottom {
-    max-width: 50vw;
-  }
 }
 @media screen and (max-width: 500px) {
   html {
@@ -184,5 +181,10 @@ h2 {
   }
   100% {
     background-position: left;
+  }
+}
+@media screen and (min-width: 800px) {
+  .bottom {
+    max-width: 55vw;
   }
 }
