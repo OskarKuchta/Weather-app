@@ -36,18 +36,6 @@ form.addEventListener("submit", (e) => {
     e.preventDefault();
 });
 
-function dayOfTheWeek(day, month, year) {
-    const weekday = [
-        "Niedziela",
-        "Poniedziałek",
-        "Wtorek",
-        "Środa",
-        "Czwartek",
-        "Piątek",
-        "Sobota"
-    ];
-    return weekday[new Date(`${day}/${month}/${year}`).getDay()];
-}
 function fetchWeatherData() {
     fetch(`http://api.weatherapi.com/v1/current.json?key=a9518d77c15f46398a4162156231103&q=${cityInput}&lang=pl`)
         .then(response => response.json())
@@ -59,7 +47,7 @@ function fetchWeatherData() {
             const m = parseInt(date.substr(5, 2));
             const d = parseInt(date.substr(8, 2));
             const time = date.substr(11);
-            dateOutput.innerHTML = `${dayOfTheWeek(d, m, y)} ${d} / ${m} / ${y}`;
+            dateOutput.innerHTML = `${d} / ${m} / ${y}`;
             timeOutput.innerHTML = time;
             nameOutput.innerHTML = data.location.name + ", <br>" + data.location.country;
             const iconId = data.current.condition.icon.substr(35, 50);
