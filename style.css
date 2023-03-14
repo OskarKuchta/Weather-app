@@ -67,6 +67,9 @@ h2 {
 .weather {
   margin: 0 2rem;
 }
+.bottom {
+  max-width: 85vw;
+}
 .city-time h1 {
   margin: 0;
   margin-bottom: 0.2rem;
@@ -123,7 +126,7 @@ h2 {
   padding: 0 1rem 0.5rem 0;
   width: 80%;
   font-size: 1rem;
-  color: rgba(255, 255, 255, 0.784)
+  color: rgba(255, 255, 255, 0.784);
 }
 .search:focus {
   outline: transparent;
@@ -183,6 +186,6 @@ h2 {
 }
 @media screen and (min-width: 800px) {
   .bottom {
-    max-width: 55vw;
+    max-width: clamp(300px,52vw, 600px);
   }
 }
